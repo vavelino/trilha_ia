@@ -153,18 +153,18 @@ Entender como aplicações baseadas em LLM funcionam sem entrar profundamente em
 
 ## Conceitos
 
-- [ ] Diferenciar IA, Machine Learning e Deep Learning.
-- [ ] Entender o que é um Large Language Model.
-- [ ] Entender o que é inferência.
-- [ ] Entender tokens.
-- [ ] Entender context window.
-- [ ] Entender Transformer em alto nível.
-- [ ] Entender Attention em alto nível.
-- [ ] Entender embeddings conceitualmente.
-- [ ] Entender hallucination.
-- [ ] Entender temperatura e parâmetros de geração.
-- [ ] Diferenciar modelos proprietários e open-source.
-- [ ] Entender limitações básicas de LLMs.
+- [x] Diferenciar IA, Machine Learning e Deep Learning.
+- [x] Entender o que é um Large Language Model.
+- [x] Entender o que é inferência.
+- [x] Entender tokens.
+- [x] Entender context window.
+- [x] Entender Transformer em alto nível.
+- [x] Entender Attention em alto nível.
+- [x] Entender embeddings conceitualmente.
+- [x] Entender hallucination.
+- [x] Entender temperatura e parâmetros de geração.
+- [x] Diferenciar modelos proprietários e open-source.
+- [x] Entender limitações básicas de LLMs.
 
 ## Não priorizar agora
 
@@ -1517,11 +1517,11 @@ ETAPA 1 — Fundamentos de IA Generativa e LLMs
 
 Primeira sessão:
 
-- [ ] IA vs ML vs Deep Learning.
-- [ ] O que é um LLM.
-- [ ] Tokens.
-- [ ] Context Window.
-- [ ] Inferência.
+- [x] IA vs ML vs Deep Learning.
+- [x] O que é um LLM.
+- [x] Tokens.
+- [x] Context Window.
+- [x] Inferência.
 - [ ] Criar o projeto `HelloLlm`.
 - [ ] Fazer a primeira chamada a um modelo.
 - [ ] Explicar o fluxo completo com minhas palavras.
