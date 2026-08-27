@@ -90,4 +90,32 @@ Hospedar um modelo oferece maior controle, mas transfere para a empresa os custo
 
 ## Próximo passo
 
-Criar o projeto console .NET `HelloLlm` e executar a aplicação inicial.
+### Projeto `HelloLlm`
+
+```text
+Usuário
+  ↓
+ConsoleUserInterface
+  ↓
+Program
+  ↓
+GeminiClient
+  ↓ HTTP
+API do Gemini
+  ↓
+Modelo
+  ↓ JSON
+GeminiClient extrai o texto
+  ↓
+ConsoleUserInterface exibe resposta e duração
+```
+
+- O modelo é o componente treinado e probabilístico que processa o contexto e gera tokens.
+- A aplicação é o software que usa o modelo e adiciona interface, configuração, tratamento de erros e regras determinísticas.
+- A chave é lida de `GEMINI_API_KEY` e não é armazenada no repositório.
+- O modelo pode ser trocado por `GEMINI_MODEL` sem alteração do código.
+- Falhas transitórias usam até três tentativas com espera crescente.
+
+## Próximo passo
+
+Revisar o projeto `HelloLlm` e seguir a próxima atividade pendente da trilha.

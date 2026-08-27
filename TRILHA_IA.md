@@ -182,22 +182,22 @@ Esses itens podem ser estudados posteriormente caso exista uma necessidade real.
 
 Criar uma aplicação console em .NET que:
 
-- [ ] receba uma pergunta;
-- [ ] envie a pergunta para um LLM;
-- [ ] imprima a resposta;
-- [ ] registre quantidade de tempo da requisição;
-- [ ] trate erros básicos;
-- [ ] permita trocar o modelo por configuração.
+- [x] receba uma pergunta;
+- [x] envie a pergunta para um LLM;
+- [x] imprima a resposta;
+- [x] registre quantidade de tempo da requisição;
+- [x] trate erros básicos;
+- [x] permita trocar o modelo por configuração.
 
 ## Definition of Done
 
 Eu consigo explicar:
 
-- [ ] O que acontece entre minha aplicação e o modelo.
-- [ ] O que é um token.
-- [ ] Por que contexto tem limite.
-- [ ] Por que um LLM pode alucinar.
-- [ ] Qual a diferença entre modelo e aplicação de IA.
+- [x] O que acontece entre minha aplicação e o modelo.
+- [x] O que é um token.
+- [x] Por que contexto tem limite.
+- [x] Por que um LLM pode alucinar.
+- [x] Qual a diferença entre modelo e aplicação de IA.
 
 ---
 
@@ -1379,6 +1379,42 @@ Copiar o template abaixo a cada sessão.
 
 ---
 
+## Sessão 2026-08-27
+
+### Tópico
+
+Fundamentos de LLMs e implementação do projeto `HelloLlm`.
+
+### O que estudei
+
+IA, Machine Learning, Deep Learning, LLMs, inferência, tokens, Context Window, Transformer, attention, embeddings, alucinação, temperatura, modelos proprietários/open-weight e limitações dos LLMs.
+
+### O que implementei
+
+Aplicação console .NET integrada ao Gemini, com configuração por variável de ambiente, troca de modelo, medição de duração, tratamento de erros transitórios e retry.
+
+### O que entendi
+
+O modelo é o componente treinado e probabilístico que gera tokens. A aplicação coordena entrada, configuração, chamada HTTP, validação, erros e apresentação da resposta.
+
+### O que ainda ficou confuso
+
+Nenhum bloqueio conceitual identificado. Structured Output e constrained decoding foram vistos apenas como prévia e serão aprofundados em etapa posterior.
+
+### Código produzido
+
+Projeto `Praticas/HelloLlm` organizado em `Clients`, `Configuration` e `UI`.
+
+### Testes realizados
+
+Compilação sem erros ou avisos; entrada vazia; encerramento; ausência de chave; erros HTTP 404 e 503; retries; troca de modelo; chamada bem-sucedida; exibição da resposta e da duração.
+
+### Próximo passo
+
+Revisar o projeto e iniciar a próxima atividade pendente sem avançar automaticamente para outro módulo.
+
+---
+
 ## Sessão YYYY-MM-DD
 
 ### Tópico
@@ -1522,9 +1558,9 @@ Primeira sessão:
 - [x] Tokens.
 - [x] Context Window.
 - [x] Inferência.
-- [ ] Criar o projeto `HelloLlm`.
-- [ ] Fazer a primeira chamada a um modelo.
-- [ ] Explicar o fluxo completo com minhas palavras.
+- [x] Criar o projeto `HelloLlm`.
+- [x] Fazer a primeira chamada a um modelo.
+- [x] Explicar o fluxo completo com minhas palavras.
 
 Depois disso, seguir a primeira tarefa pendente deste arquivo.
 
