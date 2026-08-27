@@ -66,6 +66,12 @@ temperatura alta  → mais diversidade
 
 Temperatura não garante precisão nem formato válido. Temperatura baixa melhora a consistência; JSON Schema controla o formato; validação na aplicação verifica se os dados são aceitáveis para o sistema.
 
+```text
+temperatura → diversidade da geração
+JSON Schema → estrutura da saída
+validação   → dados aceitáveis para a aplicação
+```
+
 ### Structured Output — prévia
 
 Constrained decoding controla a geração token por token, permitindo somente continuações compatíveis com regras como uma gramática ou JSON Schema. Isso pode garantir a estrutura, mas não a veracidade dos valores.

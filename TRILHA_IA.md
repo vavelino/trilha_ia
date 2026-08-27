@@ -1409,6 +1409,8 @@ Projeto `Praticas/HelloLlm` organizado em `Clients`, `Configuration` e `UI`.
 
 Compilação sem erros ou avisos; entrada vazia; encerramento; ausência de chave; erros HTTP 404 e 503; retries; troca de modelo; chamada bem-sucedida; exibição da resposta e da duração.
 
+Revisão conceitual realizada com 10 perguntas sobre treinamento, inferência, Context Window, attention, alucinação, temperatura, Structured Output, embeddings, modelos open-weight e classificação de sistemas.
+
 ### Próximo passo
 
 Revisar o projeto e iniciar a próxima atividade pendente sem avançar automaticamente para outro módulo.
