@@ -125,3 +125,83 @@ ConsoleUserInterface exibe resposta e duração
 ## Próximo passo
 
 Revisar o projeto `HelloLlm` e seguir a próxima atividade pendente da trilha.
+
+## Etapa 2 — Prompt Engineering e Context Engineering
+
+### System Prompt e User Prompt
+
+1. System Prompt
+   → define o papel, o comportamento e regras gerais, como regras de segurança.
+
+2. User Prompt
+   → contém a solicitação específica do usuário, como revisar um método.
+
+```text
+System Prompt → como o modelo deve se comportar
+User Prompt   → o que o usuário quer realizar na interação
+```
+
+Um User Prompt útil explicita a tarefa, as fontes disponíveis, o resultado esperado, as restrições e como agir quando faltarem dados. Mencionar um sistema, como Azure DevOps, não concede acesso a ele; a aplicação precisa buscar os dados por API ou ferramenta e incluí-los no contexto.
+
+```text
+Se uma fonte não estiver disponível, informe isso explicitamente.
+Não invente informações ausentes.
+Diferencie fatos encontrados de suposições.
+```
+
+### Instruções claras
+
+Instruções verificáveis definem quantidade, formato, fontes, restrições e comportamento quando faltarem dados. Termos subjetivos como “curto”, “completo” e “adequado” devem ser substituídos por critérios mensuráveis.
+
+```text
+Resumo: no máximo 50 palavras.
+Riscos: até cinco.
+Impacto: baixo, médio ou alto.
+Sem dados suficientes: “não determinado”.
+```
+
+### Few-shot examples
+
+Few-shot inclui algumas demonstrações de entrada e saída para ensinar formato, estilo ou critérios de classificação.
+
+```text
+zero-shot → nenhuma demonstração
+one-shot  → uma demonstração
+few-shot  → algumas demonstrações
+```
+
+Exemplos devem ser corretos e variados. Exemplos enviesados podem induzir um valor constante ou um padrão incorreto. Eles também consomem tokens, aumentam custo e ocupam a janela de contexto.
+
+### Prompt templates
+
+Template é uma estrutura reutilizável com campos que a aplicação preenche antes de enviar o prompt ao modelo.
+
+```text
+Título: {{title}}
+Descrição: {{description}}
+Máximo de riscos: {{maxRisks}}
+```
+
+- Partes fixas: instruções, rótulos, regras e estrutura.
+- Partes variáveis: dados da tarefa, limites e idioma.
+- Benefícios: estabilidade, repetibilidade, testes, versionamento e separação entre instruções e dados.
+
+### Prompt chaining
+
+Prompt chaining divide um processo em chamadas encadeadas, nas quais a saída de uma etapa alimenta a seguinte.
+
+```text
+extrair fatos
+    ↓
+validar fatos
+    ↓
+identificar riscos
+    ↓
+gerar dúvidas
+    ↓
+montar resposta final
+```
+
+Vantagens: etapas menores, validação intermediária e melhor localização de erros.
+
+Custos: mais chamadas, tokens e latência; erros de uma etapa podem contaminar as próximas; a aplicação precisa coordenar o fluxo.

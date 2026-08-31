@@ -209,12 +209,12 @@ Aprender a controlar melhor o comportamento de LLMs e fornecer o contexto corret
 
 ## Prompt Engineering
 
-- [ ] System Prompt.
-- [ ] User Prompt.
-- [ ] Instruções claras.
-- [ ] Few-shot examples.
-- [ ] Prompt templates.
-- [ ] Prompt chaining.
+- [x] System Prompt.
+- [x] User Prompt.
+- [x] Instruções claras.
+- [x] Few-shot examples.
+- [x] Prompt templates.
+- [x] Prompt chaining.
 - [ ] Decomposição de tarefas.
 - [ ] Estratégias para diminuir respostas inconsistentes.
 - [ ] Estratégias para reduzir alucinações.
