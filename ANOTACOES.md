@@ -205,3 +205,72 @@ montar resposta final
 Vantagens: etapas menores, validação intermediária e melhor localização de erros.
 
 Custos: mais chamadas, tokens e latência; erros de uma etapa podem contaminar as próximas; a aplicação precisa coordenar o fluxo.
+
+### Decomposição de tarefas
+
+Decomposição divide um problema complexo em subtarefas menores e bem definidas. Ela define as partes do problema; prompt chaining é uma forma possível de executar essas partes em chamadas encadeadas.
+
+```text
+Decomposição
+→ define as partes e responsabilidades
+
+Prompt chaining
+→ executa partes em sequência, passando resultados adiante
+```
+
+Subtarefas podem ter pré-condições. Se a recuperação não encontrar um work item obrigatório, a análise de riscos deve parar, informar os dados ausentes e evitar apresentar uma avaliação incompleta como confiável.
+
+### Estratégias para diminuir respostas inconsistentes
+
+Inconsistência ocorre quando entradas semelhantes produzem respostas com formato, critérios ou conteúdo muito diferentes.
+
+- Usar instruções específicas e mensuráveis.
+- Reduzir a temperatura para aumentar consistência.
+- Restringir valores com enumerações, como `baixo`, `médio` ou `alto`.
+- Usar JSON Schema quando houver suporte.
+- Fornecer exemplos few-shot corretos e variados.
+- Validar a saída na aplicação.
+- Versionar templates e critérios de classificação.
+- Decompor tarefas complexas e validar etapas intermediárias.
+
+```text
+“crítico”, “alto”, “grave”
+        ↓ restringir valores
+“baixo”, “médio”, “alto”
+```
+
+### Estratégias para reduzir alucinações
+
+- Fornecer fontes relevantes e limitar a resposta ao contexto.
+- Permitir respostas como `informação insuficiente` ou `não informado`.
+- Separar fatos de inferências e suposições.
+- Exigir evidências ou indicar a fonte de cada afirmação.
+- Não solicitar dados aos quais o modelo não tem acesso.
+- Validar informações críticas na aplicação.
+
+```text
+Não invente dados ausentes.
+Se o prazo não estiver explicitamente nas fontes, responda:
+“Prazo não informado”.
+Quando uma estimativa for solicitada, identifique-a como suposição.
+```
+
+Essas instruções reduzem alucinações, mas não garantem sua eliminação, pois a geração continua sendo probabilística.
+
+### Structured Output — solicitação de JSON
+
+Structured Output busca produzir uma saída com estrutura previsível para integração entre sistemas.
+
+```text
+Retorne exclusivamente um JSON neste formato:
+
+{
+  "summary": "string",
+  "risks": ["string"],
+  "questions": ["string"]
+}
+
+Não inclua Markdown nem texto antes ou depois do JSON.
+```
+
+Pedir JSON apenas no prompt orienta o modelo, mas não garante sintaxe, campos ou tipos. JSON Schema e constrained decoding fornecem restrições mais fortes; a aplicação ainda precisa desserializar e validar o resultado.

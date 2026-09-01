@@ -215,9 +215,9 @@ Aprender a controlar melhor o comportamento de LLMs e fornecer o contexto corret
 - [x] Few-shot examples.
 - [x] Prompt templates.
 - [x] Prompt chaining.
-- [ ] Decomposição de tarefas.
-- [ ] Estratégias para diminuir respostas inconsistentes.
-- [ ] Estratégias para reduzir alucinações.
+- [x] Decomposição de tarefas.
+- [x] Estratégias para diminuir respostas inconsistentes.
+- [x] Estratégias para reduzir alucinações.
 
 ## Structured Output
 
