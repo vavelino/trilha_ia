@@ -221,17 +221,17 @@ Aprender a controlar melhor o comportamento de LLMs e fornecer o contexto corret
 
 ## Structured Output
 
-- [ ] Solicitar JSON.
-- [ ] Validar JSON.
-- [ ] Utilizar schema.
-- [ ] Entender por que saída estruturada é melhor para integração entre sistemas.
+- [x] Solicitar JSON.
+- [x] Validar JSON.
+- [x] Utilizar schema.
+- [x] Entender por que saída estruturada é melhor para integração entre sistemas.
 
 ## Context Engineering
 
-- [ ] O que é contexto.
-- [ ] Contexto global vs contexto da tarefa.
-- [ ] O que deve entrar no contexto.
-- [ ] O que não deve entrar no contexto.
+- [x] O que é contexto.
+- [x] Contexto global vs contexto da tarefa.
+- [x] O que deve entrar no contexto.
+- [x] O que não deve entrar no contexto.
 - [ ] Como evitar contexto desnecessário.
 - [ ] Context pruning.
 - [ ] Context stitching em alto nível.

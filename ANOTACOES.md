@@ -274,3 +274,48 @@ Não inclua Markdown nem texto antes ou depois do JSON.
 ```
 
 Pedir JSON apenas no prompt orienta o modelo, mas não garante sintaxe, campos ou tipos. JSON Schema e constrained decoding fornecem restrições mais fortes; a aplicação ainda precisa desserializar e validar o resultado.
+
+#### Níveis de validação
+
+```text
+Sintaxe
+→ obedece à gramática JSON
+
+Estrutura
+→ possui campos e tipos esperados
+
+Regras de negócio
+→ valores obrigatórios, não vazios e dentro dos limites
+```
+
+#### JSON Schema
+
+JSON Schema descreve formalmente o contrato da saída.
+
+- `type`: tipo esperado.
+- `properties`: campos definidos.
+- `required`: campos obrigatórios.
+- `minLength`: tamanho mínimo do texto.
+- `minimum` e `maximum`: intervalo numérico.
+- `additionalProperties: false`: proíbe campos extras.
+
+```text
+schema no prompt
+→ orientação mais clara
+
+schema no Structured Output
+→ restrição durante a geração
+
+schema na aplicação
+→ validação depois da resposta
+```
+
+#### Integração entre sistemas
+
+Saída estruturada permite acessar campos conhecidos e comparar valores permitidos de forma determinística. Por exemplo, a aplicação pode filtrar `severity == "high"` sem interpretar um texto livre.
+
+```text
+temperatura → diversidade da geração
+schema      → estrutura e valores permitidos
+validação   → dados aceitáveis para a aplicação
+```
