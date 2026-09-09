@@ -2,7 +2,7 @@
 
 > **Comece sempre por este arquivo.** Ele define a ordem e o escopo do estudo.
 > Objetivo: aprender IA aplicada ao desenvolvimento em C#/.NET, construir uma aplicação útil e saber explicar e avaliar seu funcionamento.
-> **Agora:** terminar a Etapa 2 da trilha original, começando por “Como evitar contexto desnecessário”.
+> **Agora:** continuar a Etapa 2 em “Contexto persistente vs temporário”. Custo de contexto concluído em nível introdutório.
 
 ## Uma direção para os materiais existentes
 
@@ -30,7 +30,7 @@ Resumo dos registros existentes em 09/09/2026; não representa uma nova avaliaç
 | Projeto `HelloLlm` em .NET | Concluído: chamada ao modelo, configuração, duração e tratamento de erros. |
 | Prompt Engineering | Conceitos marcados como estudados. |
 | JSON, validação e schema | Marcados como estudados; exercício integrado da Etapa 2 ainda pendente. |
-| Context Engineering | Em andamento: contexto global/da tarefa e seleção do que incluir já estudados. |
+| Context Engineering | Em andamento: contexto global/da tarefa, seleção do que incluir, como evitar contexto desnecessário, Context pruning e Context stitching em alto nível já estudados. |
 
 Não reiniciar os fundamentos. Revisar pontualmente quando uma dúvida aparecer na prática.
 
@@ -53,12 +53,21 @@ Usar C#/.NET como linguagem principal. Aproveitar o `HelloLlm` e evoluir um assi
 
 ## Próxima sessão, sem precisar escolher novamente
 
-**Tema:** como evitar contexto desnecessário, na Etapa 2.
+**Tema:** Contexto persistente vs temporário, na Etapa 2.
 
-1. Entender como escolher informações úteis para uma tarefa e retirar ruído.
-2. Usar uma descrição de tarefa com informações relevantes e irrelevantes.
-3. Montar um contexto enxuto e justificar o que entrou e o que ficou fora.
-4. Comparar o resultado com o contexto original e registrar o que mudou.
+1. Entender a diferença entre informações mantidas para outras sessões e informações específicas da tarefa atual.
+2. Classificar exemplos e explicar como manter as informações atualizadas.
+3. Depois, iniciar o exercício integrado da Etapa 2, ainda pendente.
+
+Custo de contexto concluído em nível introdutório: o aluno explicou que retirar informações desnecessárias reduz tokens e custo. O tutor apresentou o cálculo hipotético e a ressalva de preservar requisitos; não houve medição real de consumo.
+
+Reuso de contexto concluído: para uma consulta de pedidos, o aluno selecionou stack e padrão de erros, excluindo regras específicas do cadastro de CPF. A revisão destacou conferir se as informações reutilizadas continuam válidas.
+
+Context stitching concluído: o aluno reuniu a regra de validar ativos/inativos, o padrão de erro da documentação e o comportamento atual do ClienteService. A revisão acrescentou o pedido explícito de propor um plano sem implementar.
+
+Context pruning concluído: o aluno resumiu a validação de CPF preservando ativos/inativos e equivalência entre formatos, retirando a regra antiga. A revisão acrescentou a decisão explícita de não oferecer configuração para alternar esse comportamento.
+
+Atividade anterior concluída: seleção de contexto para um plano de validação de CPF duplicado, com discussão de normalização, concorrência e requisitos indefinidos. O exercício integrado com cinco tarefas continua pendente.
 
 Depois, continuar os tópicos pendentes de contexto e concluir o exercício da Etapa 2: retornar `summary`, `technicalTasks`, `risks` e `questions`, validar a saída e testar cinco tarefas.
 

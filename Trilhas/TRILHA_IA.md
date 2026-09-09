@@ -232,12 +232,22 @@ Aprender a controlar melhor o comportamento de LLMs e fornecer o contexto corret
 - [x] Contexto global vs contexto da tarefa.
 - [x] O que deve entrar no contexto.
 - [x] O que não deve entrar no contexto.
-- [ ] Como evitar contexto desnecessário.
-- [ ] Context pruning.
-- [ ] Context stitching em alto nível.
-- [ ] Reuso de contexto.
-- [ ] Custo de contexto.
+- [x] Como evitar contexto desnecessário.
+- [x] Context pruning.
+- [x] Context stitching em alto nível.
+- [x] Reuso de contexto.
+- [x] Custo de contexto.
 - [ ] Contexto persistente vs temporário.
+
+Custo de contexto concluído em nível introdutório: o aluno explicou com suas palavras a relação entre retirar informações desnecessárias, reduzir tokens e reduzir custo. O tutor apresentou o cálculo de entrada com preço fictício (R$ 2,00 versus R$ 0,40 em 100 chamadas), diferenciou entrada/saída e reforçou preservar requisitos. Não houve cálculo independente pelo aluno nem medição real de consumo.
+
+Reuso de contexto concluído em nível introdutório: o aluno selecionou C#/.NET/SQL Server e o padrão code/message para uma nova tarefa de consulta de pedidos, justificando que são informações gerais; deixou de fora regras específicas de CPF. A revisão destacou que informações reutilizadas devem continuar válidas e relevantes.
+
+Context stitching concluído em nível introdutório: o aluno reuniu informações da tarefa (ativos e inativos), documentação da API (code/message) e código atual (ClienteService consulta apenas ativos), distinguindo comportamento desejado e existente. A revisão acrescentou o pedido explícito de propor um plano sem implementar. Exercício textual.
+
+Context pruning concluído em nível introdutório: após a explicação, o aluno escreveu seu resumo preservando a validação entre clientes ativos/inativos e a equivalência de CPF com/sem pontuação, sem carregar a regra antiga de considerar apenas ativos. A revisão acrescentou “sem configuração para alternar esse comportamento”, decisão atual que também deveria permanecer. Discutida a possibilidade de iniciar uma nova conversa levando as decisões atuais ou mantê-las em uma seção do arquivo. Exercício textual, sem implementação.
+
+Registro da atividade: seleção de informações para planejar a validação de CPF duplicado. O aluno retirou informações irrelevantes, escreveu um pedido preservando regras de formato, clientes inativos e concorrência, explicou a condição de corrida e explicitou uma regra indefinida. A revisão destacou a relevância do serviço/banco, a preservação de requisitos e a necessidade de definir o comportamento provisório antes de implementar uma regra pendente. Não houve implementação nem comparação de execuções de prompts nesta atividade.
 
 ## Exercício
 

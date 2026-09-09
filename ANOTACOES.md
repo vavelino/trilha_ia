@@ -72,6 +72,97 @@ JSON Schema → estrutura da saída
 validação   → dados aceitáveis para a aplicação
 ```
 
+### Context Engineering — selecionar informações úteis
+
+Context Engineering envolve escolher e organizar as informações disponíveis para o modelo realizar uma tarefa: instruções, regras, documentos, trechos de código e resultados de ferramentas.
+
+- Contexto global: informações compartilhadas entre tarefas, como arquitetura e padrões do projeto.
+- Contexto da tarefa: objetivo atual, regras específicas, arquivos envolvidos e decisões pendentes.
+- Uma informação deve entrar quando ajuda a resolver a tarefa ou evita uma solução incorreta.
+- Históricos sem relação com o pedido, repetições e decisões superadas podem ser removidos.
+
+Pergunta prática: **se eu retirar esta informação, a solução pode ficar incorreta ou desrespeitar algum requisito?**
+
+Contexto enxuto preserva o que muda a solução. Um pedido curto demais pode obrigar a investigar mais arquivos, mas o risco principal é omitir regras que nem o código revela. Acesso ao projeto depende das ferramentas disponíveis; o modelo não descobre automaticamente requisitos ausentes.
+
+#### Exercício — validação de CPF duplicado
+
+Para propor um plano de implementação, foram relevantes:
+
+- C#/.NET, endpoint existente, `ClienteService` e SQL Server;
+- CPF recebido com ou sem pontuação;
+- inclusão de clientes inativos na verificação;
+- possibilidade de duas requisições simultâneas;
+- decisões pendentes sobre a resposta de erro.
+
+Mudança de logotipo e reunião de outro módulo foram retiradas por não contribuírem para a tarefa.
+
+O aluno explicou que duas requisições podem consultar o banco antes de qualquer uma gravar, ambas não encontrarem o CPF e tentarem cadastrá-lo. A discussão mostrou como um detalhe do contexto muda o plano de implementação. A proteção de unicidade precisa considerar a representação normalizada do CPF e o tratamento da tentativa rejeitada.
+
+#### Regras pendentes e decisões provisórias
+
+Uma regra indefinida deve ser apresentada como pendência. Comentários e código fácil de alterar não definem o comportamento atual.
+
+Exemplo: “Ainda não foi definido se clientes inativos entram na validação. Destaque a pendência no plano e solicite a definição antes de implementar essa regra.”
+
+Uma decisão provisória pode ser usada quando explicitamente autorizada. Uma mensagem genérica em uma constante define apenas o texto; status HTTP e formato da resposta ainda podem estar pendentes.
+
+### Context pruning — retirar o que perdeu utilidade
+
+É revisar o contexto acumulado e remover informações irrelevantes, repetidas ou superadas, preservando requisitos atuais, restrições e decisões pendentes.
+
+Exemplo discutido:
+
+| Histórico | Tratamento no resumo atual |
+|---|---|
+| Validar somente clientes ativos | Remover: regra substituída. |
+| Considerar uma configuração para incluir inativos | Remover: proposta descartada. |
+| Decisão aprovada: ativos e inativos, sem configuração | Preservar. |
+| CPF com e sem pontuação representa o mesmo documento | Preservar. |
+
+Resumo produzido pelo aluno e complementado na revisão:
+
+> Implementar validação de CPF duplicado considerando clientes ativos e inativos, sem configuração para alternar essa regra. Comparar os CPFs desconsiderando pontuação, pois diferenças de formatação não representam documentos diferentes.
+
+Uma nova conversa pode começar com esse resumo quando o histórico anterior não tiver mais utilidade. Abrir uma conversa por decisão não é necessário, e abrir uma conversa vazia não substitui levar os requisitos relevantes. Outra opção é manter uma seção “Decisões atuais” atualizada no arquivo do projeto.
+
+### Custo de contexto
+
+Em uma API cobrada por tokens, retirar informações desnecessárias reduz os tokens de entrada e esse componente do custo. A saída também pode ser cobrada, com preço diferente. Preservar requisitos: um contexto incompleto pode causar erros e novas chamadas, anulando a economia.
+
+Exemplo com preço fictício de R$ 2 por milhão de tokens de entrada, sem cache:
+
+| Entrada por chamada | Chamadas | Total de tokens de entrada | Custo de entrada |
+|---|---:|---:|---:|
+| 10.000 tokens | 100 | 1.000.000 | R$ 2,00 |
+| 2.000 tokens | 100 | 200.000 | R$ 0,40 |
+
+Fórmula: tokens por chamada × chamadas ÷ 1.000.000 × preço por milhão. Nesse exemplo, a redução do custo de entrada é de 80%; o custo da saída não foi incluído.
+
+Reenviar histórico pode repetir o consumo de entrada. Cache e cobrança dependem do serviço. Em aplicativos com assinatura, menos tokens não significa necessariamente uma mensalidade menor.
+
+O aluno explicou a relação entre menos contexto desnecessário, menos tokens e menor custo. O cálculo foi apresentado pelo tutor; não houve medição real.
+
+### Reuso de contexto
+
+É reaproveitar informações relevantes que continuam válidas entre tarefas, como arquitetura, stack e padrões da API. Antes de reutilizar, conferir se a informação permanece atual e se realmente se aplica ao novo pedido.
+
+No exercício de trocar o cadastro de clientes por uma consulta de pedidos, o aluno escolheu reutilizar C#/.NET, SQL Server e o formato de erro `code`/`message`, por serem informações gerais da aplicação. As regras de CPF e concorrência no cadastro ficaram fora por pertencerem à funcionalidade anterior.
+
+Reutilizar texto não garante desconto nem memória automática: o conteúdo precisa estar disponível na chamada. Eventuais mecanismos de cache e sua cobrança dependem do serviço usado.
+
+### Context stitching em alto nível — reunir fontes
+
+Neste estudo, o termo descreve reunir informações relevantes de fontes diferentes em um contexto coerente para a tarefa. Por exemplo: juntar a regra aprovada no work item, os padrões da documentação e o comportamento encontrado no código.
+
+Identificar a origem das informações e distinguir comportamento existente de comportamento desejado. Se duas fontes divergirem, verificar se existe uma decisão explícita que resolva a divergência; caso contrário, registrar o conflito como pendência. Não combinar regras incompatíveis silenciosamente.
+
+Context pruning ajuda a selecionar o que permanece; Context stitching ajuda a organizar as partes selecionadas.
+
+Exercício concluído: o aluno reuniu a regra da tarefa, o contrato da documentação e o comportamento atual do código. Pedido consolidado após revisão:
+
+> Proponha um plano de alteração, sem implementar ainda. A validação de CPF deve considerar clientes ativos e inativos, conforme a tarefa aprovada. Os erros devem seguir o formato `code` e `message` definido na documentação da API. Hoje, o `ClienteService` obtém apenas clientes ativos; identifique a alteração necessária para atender à nova regra.
+
 ### Structured Output — prévia
 
 Constrained decoding controla a geração token por token, permitindo somente continuações compatíveis com regras como uma gramática ou JSON Schema. Isso pode garantir a estrutura, mas não a veracidade dos valores.
