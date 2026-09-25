@@ -126,6 +126,16 @@ Resumo produzido pelo aluno e complementado na revisão:
 
 Uma nova conversa pode começar com esse resumo quando o histórico anterior não tiver mais utilidade. Abrir uma conversa por decisão não é necessário, e abrir uma conversa vazia não substitui levar os requisitos relevantes. Outra opção é manter uma seção “Decisões atuais” atualizada no arquivo do projeto.
 
+### Exercício integrado — tarefa para JSON (24/09/2026)
+
+O aluno escreveu o prompt inicial. A revisão definiu `summary` como texto e `technicalTasks`, `risks` e `questions` como listas de textos, porque cada uma pode conter vários itens. Usar os nomes exatos, sem crases nas chaves; listas vazias são `[]`.
+
+Decisões indefinidas devem virar perguntas. No caso de CPF, o status HTTP ficou pendente e possíveis duplicidades na base foram tratadas como hipótese, sem inventar fatos.
+
+Na revisão da saída ilustrativa, o aluno identificou atividades excessivamente fragmentadas. Ajuste do prompt: agrupar passos relacionados sem perder requisitos. JSON sintaticamente válido ainda pode apresentar conteúdo redundante ou incompleto.
+
+Prompt consolidado: `Praticas/HelloLlm/Prompts/analisar-tarefa.md`. O exemplo foi revisado na conversa, não executado na aplicação. Próxima prática: contrato C#, desserialização/validação e cinco tarefas de teste. Pedir JSON no prompt não substitui validar a resposta no código.
+
 ### Contexto persistente vs temporário
 
 Persistente é a informação mantida para apoiar outras tarefas ou sessões; temporário é o contexto necessário para uma tarefa ou investigação atual.

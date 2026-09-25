@@ -2,7 +2,7 @@
 
 > **Comece sempre por este arquivo.** Ele define a ordem e o escopo do estudo.
 > Objetivo: aprender IA aplicada ao desenvolvimento em C#/.NET, construir uma aplicação útil e saber explicar e avaliar seu funcionamento.
-> **Agora:** criar o prompt inicial do exercício integrado da Etapa 2. Conceitos introdutórios de contexto concluídos; prática integrada e revisão final pendentes.
+> **Agora:** levar o prompt revisado de tarefa → JSON para o `HelloLlm`, começando pelo contrato C#. Um caso foi revisado na conversa; testes na aplicação ainda pendentes.
 
 ## Uma direção para os materiais existentes
 
@@ -19,9 +19,22 @@ Não é necessário fazer três trilhas. Vamos continuar o aprendizado já inici
 
 **Se os arquivos sugerirem ordens diferentes, seguir este README.** Checkboxes opcionais em aberto na trilha original não bloqueiam o avanço. Não procurar simplesmente o primeiro checkbox vazio do arquivo inteiro.
 
-## O que já estudei
+## Método de estudo acordado em 24/09/2026
 
-Resumo dos registros existentes em 09/09/2026; não representa uma nova avaliação de domínio.
+Manter esta sequência e evoluir um único projeto .NET: análise de tarefas → ferramentas → documentos/RAG → agente → avaliação e entrega. Cada sessão deve produzir uma pequena parte utilizável: explicação breve, tentativa do aluno, execução e revisão. Usar perguntas de revisão dentro da atividade, evitando longas sequências de perguntas isoladas. O tutor prepara exemplos e ajuda a destravar, mas deixa o aluno implementar e explicar a parte em estudo.
+
+O curso e o repositório são materiais de consulta, sem adicionar uma nova trilha obrigatória. Referências disponíveis localmente (não distribuídas junto deste guia):
+
+- Ementa: `Curso/Ementa_Detalhada__Engenheria_de_IA_Aplicada_1763558262665605.pdf`.
+- Exemplos: `Repositorio/engenharia-de-software-com-ia-aplicada-main/`.
+- Agora: módulo 07, planejamento e escopo, para exemplos de requisitos.
+- Depois: módulos 02/03 para APIs e MCP; módulo 04 para agentes e contexto; módulo 08 para arquitetura.
+
+Consultar um exemplo quando a atividade precisar. Adaptar conceitos para .NET; verificar dependências antes de executar exemplos. UI/UX, AIOps aprofundado, multiagentes e fine-tuning permanecem opcionais.
+
+## Progresso resumido
+
+Resumo atualizado em 24/09/2026, preservando as evidências das sessões.
 
 | Assunto | Situação registrada |
 |---|---|
@@ -30,7 +43,7 @@ Resumo dos registros existentes em 09/09/2026; não representa uma nova avaliaç
 | Projeto `HelloLlm` em .NET | Concluído: chamada ao modelo, configuração, duração e tratamento de erros. |
 | Prompt Engineering | Conceitos marcados como estudados. |
 | JSON, validação e schema | Marcados como estudados; exercício integrado da Etapa 2 ainda pendente. |
-| Context Engineering | Em andamento: contexto global/da tarefa, seleção do que incluir, como evitar contexto desnecessário, Context pruning e Context stitching em alto nível já estudados. |
+| Context Engineering | Conceitos introdutórios concluídos. Aplicação integrada e revisão final pendentes. |
 
 Não reiniciar os fundamentos. Revisar pontualmente quando uma dúvida aparecer na prática.
 
@@ -55,9 +68,11 @@ Usar C#/.NET como linguagem principal. Aproveitar o `HelloLlm` e evoluir um assi
 
 **Tema:** exercício integrado da Etapa 2 — analisar uma tarefa e retornar JSON.
 
-1. Escrever o prompt inicial para retornar `summary`, `technicalTasks`, `risks` e `questions` a partir de uma tarefa.
-2. Revisar o contrato da saída e testar uma tarefa por vez, até completar cinco.
-3. Validar as saídas, melhorar o prompt e realizar a revisão final da etapa.
+1. Criar o contrato C# `TaskAnalysis` com um resumo e três listas de textos. O aluno escreve a primeira versão.
+2. Usar o [prompt revisado](Praticas/HelloLlm/Prompts/analisar-tarefa.md) no fluxo existente, desserializar a resposta e validar campos, tipos e conteúdo. Implementar por partes.
+3. Executar cinco tarefas diferentes na aplicação, guardar entradas/resultados, investigar falhas e comparar ajustes do prompt.
+
+Já realizado: prompt inicial escrito pelo aluno, correção do contrato para listas, tratamento de pendências e revisão manual de uma saída ilustrativa sobre CPF. O aluno identificou fragmentação em `technicalTasks`; o prompt foi melhorado. Isso ainda não representa execução ou validação automatizada na aplicação.
 
 Contexto persistente vs temporário concluído em 15/09/2026: o aluno classificou stack e padrão de erros como persistentes; mensagem do último teste e instrução específica de aguardar revisão como temporárias.
 

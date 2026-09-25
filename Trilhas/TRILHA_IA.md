@@ -266,12 +266,14 @@ Criar um prompt que recebe uma descrição de tarefa do Azure DevOps e retorna:
 
 Checklist:
 
-- [ ] criar prompt inicial;
+- [x] criar prompt inicial;
 - [ ] testar com 5 tarefas diferentes;
-- [ ] identificar inconsistências;
-- [ ] melhorar prompt;
-- [ ] definir formato estruturado;
+- [x] identificar inconsistências;
+- [x] melhorar prompt;
+- [x] definir formato estruturado;
 - [ ] validar a saída.
+
+Registro em 24/09/2026: aluno criou o pedido inicial, entendeu o uso de listas e revisou uma saída ilustrativa do tutor para CPF. Identificou fragmentação excessiva nas atividades técnicas; a revisão adicionou agrupamento de passos relacionados. Contrato textual definido: summary como string; technicalTasks, risks e questions como listas de strings. Prompt consolidado em `Praticas/HelloLlm/Prompts/analisar-tarefa.md`. Nenhuma execução de API ou validação automatizada foi realizada neste exercício; os cinco testes na aplicação permanecem pendentes. Próximo passo: aluno implementar o contrato C# antes da integração.
 
 ## Definition of Done
 
