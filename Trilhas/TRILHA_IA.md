@@ -237,7 +237,9 @@ Aprender a controlar melhor o comportamento de LLMs e fornecer o contexto corret
 - [x] Context stitching em alto nível.
 - [x] Reuso de contexto.
 - [x] Custo de contexto.
-- [ ] Contexto persistente vs temporário.
+- [x] Contexto persistente vs temporário.
+
+Contexto persistente vs temporário concluído em nível introdutório em 15/09/2026: o aluno classificou stack e padrão de erros como persistentes, e a mensagem do último teste e a instrução de planejar/aguardar revisão nesta tarefa como temporárias. Exercício integrado e revisão final ainda pendentes.
 
 Custo de contexto concluído em nível introdutório: o aluno explicou com suas palavras a relação entre retirar informações desnecessárias, reduzir tokens e reduzir custo. O tutor apresentou o cálculo de entrada com preço fictício (R$ 2,00 versus R$ 0,40 em 100 chamadas), diferenciou entrada/saída e reforçou preservar requisitos. Não houve cálculo independente pelo aluno nem medição real de consumo.
 

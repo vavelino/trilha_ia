@@ -126,6 +126,23 @@ Resumo produzido pelo aluno e complementado na revisão:
 
 Uma nova conversa pode começar com esse resumo quando o histórico anterior não tiver mais utilidade. Abrir uma conversa por decisão não é necessário, e abrir uma conversa vazia não substitui levar os requisitos relevantes. Outra opção é manter uma seção “Decisões atuais” atualizada no arquivo do projeto.
 
+### Contexto persistente vs temporário
+
+Persistente é a informação mantida para apoiar outras tarefas ou sessões; temporário é o contexto necessário para uma tarefa ou investigação atual.
+
+No exercício de 15/09/2026, o aluno classificou corretamente:
+
+| Informação | Classificação |
+|---|---|
+| O projeto usa C#/.NET e SQL Server | Persistente |
+| Erros da API seguem `code` e `message` | Persistente |
+| Nesta tarefa, gerar um plano e aguardar revisão | Temporário |
+| Mensagem de falha da última execução do teste | Temporário |
+
+Uma informação salva em arquivo precisa ser carregada pela aplicação ou ferramenta para entrar no contexto. Persistente não significa imutável: atualizar padrões quando mudarem. Uma investigação temporária pode produzir uma decisão que mereça documentação duradoura.
+
+Se planejar e aguardar revisão fosse uma regra geral do projeto, poderia ser uma instrução persistente. O escopo explícito determina como reutilizá-la.
+
 ### Custo de contexto
 
 Em uma API cobrada por tokens, retirar informações desnecessárias reduz os tokens de entrada e esse componente do custo. A saída também pode ser cobrada, com preço diferente. Preservar requisitos: um contexto incompleto pode causar erros e novas chamadas, anulando a economia.

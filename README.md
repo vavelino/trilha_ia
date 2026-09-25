@@ -2,7 +2,7 @@
 
 > **Comece sempre por este arquivo.** Ele define a ordem e o escopo do estudo.
 > Objetivo: aprender IA aplicada ao desenvolvimento em C#/.NET, construir uma aplicação útil e saber explicar e avaliar seu funcionamento.
-> **Agora:** continuar a Etapa 2 em “Contexto persistente vs temporário”. Custo de contexto concluído em nível introdutório.
+> **Agora:** criar o prompt inicial do exercício integrado da Etapa 2. Conceitos introdutórios de contexto concluídos; prática integrada e revisão final pendentes.
 
 ## Uma direção para os materiais existentes
 
@@ -53,11 +53,13 @@ Usar C#/.NET como linguagem principal. Aproveitar o `HelloLlm` e evoluir um assi
 
 ## Próxima sessão, sem precisar escolher novamente
 
-**Tema:** Contexto persistente vs temporário, na Etapa 2.
+**Tema:** exercício integrado da Etapa 2 — analisar uma tarefa e retornar JSON.
 
-1. Entender a diferença entre informações mantidas para outras sessões e informações específicas da tarefa atual.
-2. Classificar exemplos e explicar como manter as informações atualizadas.
-3. Depois, iniciar o exercício integrado da Etapa 2, ainda pendente.
+1. Escrever o prompt inicial para retornar `summary`, `technicalTasks`, `risks` e `questions` a partir de uma tarefa.
+2. Revisar o contrato da saída e testar uma tarefa por vez, até completar cinco.
+3. Validar as saídas, melhorar o prompt e realizar a revisão final da etapa.
+
+Contexto persistente vs temporário concluído em 15/09/2026: o aluno classificou stack e padrão de erros como persistentes; mensagem do último teste e instrução específica de aguardar revisão como temporárias.
 
 Custo de contexto concluído em nível introdutório: o aluno explicou que retirar informações desnecessárias reduz tokens e custo. O tutor apresentou o cálculo hipotético e a ressalva de preservar requisitos; não houve medição real de consumo.
 
@@ -69,7 +71,7 @@ Context pruning concluído: o aluno resumiu a validação de CPF preservando ati
 
 Atividade anterior concluída: seleção de contexto para um plano de validação de CPF duplicado, com discussão de normalização, concorrência e requisitos indefinidos. O exercício integrado com cinco tarefas continua pendente.
 
-Depois, continuar os tópicos pendentes de contexto e concluir o exercício da Etapa 2: retornar `summary`, `technicalTasks`, `risks` e `questions`, validar a saída e testar cinco tarefas.
+A Etapa 2 permanece em andamento até concluir o exercício integrado e a revisão final.
 
 Uma sessão termina com um pequeno resultado e uma explicação com minhas palavras. Não é necessário terminar a etapa inteira de uma vez.
 
