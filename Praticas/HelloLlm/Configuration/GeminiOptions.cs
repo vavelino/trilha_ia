@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace HelloLlm.Configuration;
 
 public sealed class GeminiOptions
@@ -11,17 +13,46 @@ public sealed class GeminiOptions
         Model = model;
     }
 
-    public static GeminiOptions FromEnvironment()
+    public static GeminiOptions Load()
     {
-        var apiKey = Environment.GetEnvironmentVariable("GEMINI_API_KEY");
+        string? localApiKey = null;
+        string? localModel = null;
+        var path = Path.Combine(AppContext.BaseDirectory, "appsettings.Local.json");
+        if (File.Exists(path))
+        {
+            try
+            {
+                using var document = JsonDocument.Parse(File.ReadAllText(path));
+                var gemini = document.RootElement.GetProperty("Gemini");
+                if (gemini.TryGetProperty("ApiKey", out var key))
+                    localApiKey = key.GetString();
+                if (gemini.TryGetProperty("Model", out var modelValue))
+                    localModel = modelValue.GetString();
+            }
+            catch (Exception exception) when (exception is JsonException
+                or KeyNotFoundException or InvalidOperationException or IOException
+                or UnauthorizedAccessException)
+            {
+                // Não incluir o conteúdo do arquivo na mensagem: ele contém a chave.
+                throw new InvalidOperationException(
+                    "Não foi possível ler appsettings.Local.json. Confira o JSON e a seção Gemini.");
+            }
+        }
+
+        // Configuração local tem prioridade; ambiente serve como alternativa.
+        var apiKey = !string.IsNullOrWhiteSpace(localApiKey)
+            ? localApiKey
+            : Environment.GetEnvironmentVariable("GEMINI_API_KEY");
 
         if (string.IsNullOrWhiteSpace(apiKey))
         {
             throw new InvalidOperationException(
-                "A variável de ambiente GEMINI_API_KEY não foi configurada.");
+                "Configure Gemini:ApiKey em appsettings.Local.json ou a variável GEMINI_API_KEY.");
         }
 
-        var model = Environment.GetEnvironmentVariable("GEMINI_MODEL");
+        var model = !string.IsNullOrWhiteSpace(localModel)
+            ? localModel
+            : Environment.GetEnvironmentVariable("GEMINI_MODEL");
 
         if (string.IsNullOrWhiteSpace(model))
         {

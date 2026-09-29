@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="appsettings.Local.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never" />
     <None Update="Prompts/analisar-tarefa.md" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

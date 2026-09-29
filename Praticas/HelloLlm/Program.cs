@@ -53,7 +53,7 @@ if (analyzeTask)
 GeminiOptions options;
 try
 {
-    options = GeminiOptions.FromEnvironment();
+    options = GeminiOptions.Load();
 }
 catch (InvalidOperationException exception)
 {
