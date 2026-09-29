@@ -2,7 +2,7 @@
 
 > **Comece sempre por este arquivo.** Ele define a ordem e o escopo do estudo.
 > Objetivo: aprender IA aplicada ao desenvolvimento em C#/.NET, construir uma aplicação útil e saber explicar e avaliar seu funcionamento.
-> **Agora:** levar o prompt revisado de tarefa → JSON para o `HelloLlm`, começando pelo contrato C#. Um caso foi revisado na conversa; testes na aplicação ainda pendentes.
+> **Agora:** integração disponível com `--analyze-task`; parar para discutir JSON solicitado no prompt versus schema na geração antes da primeira chamada real. Validação local testada; cinco tarefas no modelo ainda pendentes.
 
 ## Uma direção para os materiais existentes
 
@@ -21,7 +21,7 @@ Não é necessário fazer três trilhas. Vamos continuar o aprendizado já inici
 
 ## Método de estudo acordado em 24/09/2026
 
-Manter esta sequência e evoluir um único projeto .NET: análise de tarefas → ferramentas → documentos/RAG → agente → avaliação e entrega. Cada sessão deve produzir uma pequena parte utilizável: explicação breve, tentativa do aluno, execução e revisão. Usar perguntas de revisão dentro da atividade, evitando longas sequências de perguntas isoladas. O tutor prepara exemplos e ajuda a destravar, mas deixa o aluno implementar e explicar a parte em estudo.
+Manter esta sequência e evoluir um único projeto .NET: análise de tarefas → ferramentas → documentos/RAG → agente → avaliação e entrega. O aluno tem seis anos de experiência em C#: o tutor implementa diretamente código convencional, validações e infraestrutura. Parar nas decisões específicas de IA para explicar e avaliar resultados com o aluno. Não exigir demonstrações de sintaxe C#; preservar a participação do aluno na escolha de contexto, prompts, avaliação e arquitetura de IA.
 
 O curso e o repositório são materiais de consulta, sem adicionar uma nova trilha obrigatória. Referências disponíveis localmente (não distribuídas junto deste guia):
 
@@ -68,7 +68,7 @@ Usar C#/.NET como linguagem principal. Aproveitar o `HelloLlm` e evoluir um assi
 
 **Tema:** exercício integrado da Etapa 2 — analisar uma tarefa e retornar JSON.
 
-1. Criar o contrato C# `TaskAnalysis` com um resumo e três listas de textos. O aluno escreve a primeira versão.
+1. Desserialização e validação local implementadas. Discutir a estratégia de saída estruturada antes de executar `dotnet run --project Praticas/HelloLlm -- --analyze-task`.
 2. Usar o [prompt revisado](Praticas/HelloLlm/Prompts/analisar-tarefa.md) no fluxo existente, desserializar a resposta e validar campos, tipos e conteúdo. Implementar por partes.
 3. Executar cinco tarefas diferentes na aplicação, guardar entradas/resultados, investigar falhas e comparar ajustes do prompt.
 
